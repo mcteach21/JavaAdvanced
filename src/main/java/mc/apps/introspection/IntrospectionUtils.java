@@ -15,7 +15,7 @@ public class IntrospectionUtils {
 //    public static void InvokeMethod(String methodName, String className){
 //        try {
 //            Class<?> methodClass = Class.forName(className);
-//            Method m = methodClass.getDeclaredMethod(methodName.replace(" ","")+"Tests",  null);
+//            Method m = methodClass.getDeclaredMethod(methodName.replace(" ",""),  null);
 //            m.invoke(null);
 //        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | ClassNotFoundException e) {
 //            // Todo : throw custom exception..
@@ -25,7 +25,7 @@ public class IntrospectionUtils {
     public static Optional<Object> InvokeMethod(String methodName, String className, Class<?>[] parameterTypes, Object[] arguments){
         try {
             Class<?> methodClass = Class.forName(className);
-            Method m = methodClass.getDeclaredMethod(methodName.replace(" ","")+"Tests", parameterTypes);
+            Method m = methodClass.getDeclaredMethod(methodName.replace(" ",""), parameterTypes);
 
             return Optional.ofNullable(m.invoke(null, arguments));
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | ClassNotFoundException e) {
