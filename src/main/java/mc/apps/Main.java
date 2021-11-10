@@ -7,7 +7,10 @@ import mc.apps.jdk8.Jdk8Features;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.concurrent.ExecutionException;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 import static mc.apps.introspection.IntrospectionUtils.*;
 import static mc.apps.tools.Utils.*;
@@ -26,7 +29,7 @@ public class Main {
            Menu(options);
            PrintLoopThenReturn(String.format("************** %s **************", title));
 
-           choice = ReadInt("your choice :");
+           choice = ReadInt("your choice : ");
            ok = (choice >0 && choice <= options.size());
 
            if(ok)
@@ -66,12 +69,15 @@ public class Main {
         Display("Statistiques (Thread:Resource Use)");
         cu.Statistics();
 
-        Display("Future<>, CompletableFuture<>");
+        Display("Future<>, ScheduledFuture<>, CompletableFuture<>");
         try {
-            Concurrent2Utils.Demo();
+            Concurrent2Utils.FutureDemo();
+            Concurrent2Utils.CompletableFutureDemo();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
+
     }
     public static void IntrospectionTests(){
         String title = "Introspection";
@@ -114,6 +120,10 @@ public class Main {
         String title = "Tests";
         Display(title);
 
+        Supplier<?> supplier = ()->new Random().nextInt(100);
+        Stream.generate(supplier)
+                .limit(5)
+                .forEach(System.out::println);
         PrintLoopThenReturn(String.format("************** %s **************", title));
     }
 
