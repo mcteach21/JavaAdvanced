@@ -1,5 +1,7 @@
 package mc.apps.tools;
 
+import mc.apps.Main;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -39,5 +41,10 @@ public class Utils {
         }catch(Exception e){}
 
         return 0;
+    }
+
+
+    public static String ResourcesPath(){
+        return Utils.class.getResource("/").getFile();
     }
 }

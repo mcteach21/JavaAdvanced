@@ -1,8 +1,13 @@
-package mc.apps.jdk8;
+package mc.apps.modele;
 
-import java.beans.JavaBean;
+//@JavaBean
 
-@JavaBean
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "user")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class User {
     private static int _id=0;
     private int id;

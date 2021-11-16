@@ -1,4 +1,5 @@
 package mc.apps.jdk8;
+import mc.apps.modele.User;
 import org.apache.commons.collections4.MapUtils;
 
 import java.util.Arrays;
